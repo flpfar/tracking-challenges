@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { login } from '../../actions/user';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector(state => state.userData)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function fetchData(user) {
-    try {
-      const response = await axios.post(`http://localhost:3001/api/login`, user);
-      console.log(response)
-    } catch (error) {
-
-    }
-  }
-
   function handleSubmit(e) {
     e.preventDefault();
-    const user = { user: {email, password}}
-    fetchData(user);
+    dispatch(login({ user: { email, password } }));
   }
 
   return (
     <div className="">
       <h1>Login</h1>
+      
       <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} value={email} />
         <input type="password" name="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} />
         <button type="submit">Submit</button>
       </form>
+
+      {userData.loggedIn ? <Redirect to="/" /> : <p>{ userData.errors }</p>}
     </div>
   );
 }
