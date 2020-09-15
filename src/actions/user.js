@@ -5,6 +5,13 @@ function saveToken(token) {
   api.defaults.headers.Authorization = `Bearer ${token}`
 }
 
+function dispatchLoginFailed(dispatch, error) {
+  dispatch({
+    type: 'LOGIN_FAILED',
+    payload: (error.response && error.response.data) || { errors: error.message },
+  })
+}
+
 const login = (user) => async dispatch => {
   try {
     dispatch({
@@ -21,11 +28,7 @@ const login = (user) => async dispatch => {
     saveToken(response.data.token);
 
   } catch (error) {
-    console.log(error.response.data)
-    dispatch({
-      type: 'LOGIN_FAILED',
-      payload: error.response.data,
-    })
+    dispatchLoginFailed(dispatch, error);
   }
 }
 
@@ -50,10 +53,7 @@ const autoLogin = () => async dispatch => {
         api.defaults.headers.Authorization = null;
         localStorage.removeItem('token');
 
-        dispatch({
-          type: 'LOGIN_FAILED',
-          payload: error.response.data,
-        })
+        dispatchLoginFailed(dispatch, error);
       }
     })();
   } else {
