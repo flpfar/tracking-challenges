@@ -7,7 +7,6 @@ function App() {
   const dispatch = useDispatch();
   const loggedIn = useSelector(state => state.userData.loggedIn)
 
-  console.log('APP', loggedIn)
   useEffect(() => {
     if(loggedIn == null) {
       dispatch(autoLogin());
