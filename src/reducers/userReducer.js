@@ -1,4 +1,4 @@
-const initialState = { loading: false, loggedIn: false }
+const initialState = { loading: false }
 
 const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -9,7 +9,9 @@ const userReducer = (state = initialState, action) => {
     case 'USER_LOGGED_IN':
       return { user: payload.user, token: payload.token, loading: false, loggedIn: true };
     case 'LOGIN_FAILED':
-      return { errors: payload.errors, loggedIn: false };
+      return { errors: payload.errors, loggedIn: false, loading: false };
+    case 'NO_TOKEN':
+      return { loggedIn: false };
     default:
       return state;
   }

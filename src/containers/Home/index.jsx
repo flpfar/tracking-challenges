@@ -1,8 +1,13 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
+  const userData = useSelector(state => state.userData);
+
   return (
-    <h1>Hello, Home!</h1>
+    <div>
+      <h1>Hello, {userData.user.name}!</h1>
+    </div>
   );
 };
 
