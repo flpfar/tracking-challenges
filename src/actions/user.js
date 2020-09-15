@@ -5,9 +5,9 @@ function saveToken(token) {
   api.defaults.headers.Authorization = `Bearer ${token}`
 }
 
-function dispatchLoginFailed(dispatch, error) {
+function dispatchActionFailed(dispatch, error) {
   dispatch({
-    type: 'LOGIN_FAILED',
+    type: 'ACTION_FAILED',
     payload: (error.response && error.response.data) || { errors: error.message },
   })
 }
@@ -28,7 +28,7 @@ const login = (user) => async dispatch => {
     saveToken(response.data.token);
 
   } catch (error) {
-    dispatchLoginFailed(dispatch, error);
+    dispatchActionFailed(dispatch, error);
   }
 }
 
@@ -53,7 +53,7 @@ const autoLogin = () => async dispatch => {
         api.defaults.headers.Authorization = null;
         localStorage.removeItem('token');
 
-        dispatchLoginFailed(dispatch, error);
+        dispatchActionFailed(dispatch, error);
       }
     })();
   } else {
@@ -63,5 +63,23 @@ const autoLogin = () => async dispatch => {
   }
 }
 
+const signUp = (user) => async dispatch => {
+  try{
+    dispatch({
+      type: 'LOADING_USER',
+    });
 
-export { login, autoLogin };
+    const response = await api.post(`/signup`, user);
+
+    dispatch({
+      type: 'USER_LOGGED_IN',
+      payload: response.data,
+    });
+
+    saveToken(response.data.token);
+  } catch(error) {
+    dispatchActionFailed(dispatch, error);
+  }
+}
+
+export { login, autoLogin, signUp };

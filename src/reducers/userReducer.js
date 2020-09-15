@@ -8,7 +8,7 @@ const userReducer = (state = initialState, action) => {
       return { ...state, loading: true }
     case 'USER_LOGGED_IN':
       return { user: payload.user, token: payload.token, loading: false, loggedIn: true };
-    case 'LOGIN_FAILED':
+    case 'ACTION_FAILED':
       return { errors: payload.errors, loggedIn: false, loading: false };
     case 'NO_TOKEN':
       return { loggedIn: false };

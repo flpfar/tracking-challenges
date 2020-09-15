@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './containers/Home';
 import Login from './containers/Login';
+import SignUp from './containers/SignUp';
 
 const Routes = () => {
   const loggedIn = useSelector(state => state.userData.loggedIn);
@@ -12,8 +13,11 @@ const Routes = () => {
       <Route path="/" exact>
         { loggedIn ? <Home /> : <Redirect to="/login" /> }
       </Route>
-      <Route path="/login" component={ Login } exact>
+      <Route path="/login" exact>
         { loggedIn ? <Redirect to="/" /> : <Login /> }
+      </Route>
+      <Route path="/signup" exact>
+        { loggedIn ? <Redirect to="/" /> : <SignUp /> }
       </Route>
     </Switch>
   </BrowserRouter>)
