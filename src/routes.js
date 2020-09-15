@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Home from './containers/Home';
+import Progress from './containers/Progress';
 import Login from './containers/Login';
 import SignUp from './containers/SignUp';
 
@@ -13,6 +14,11 @@ const Routes = () => {
       <Route path="/" exact>
         { loggedIn ? <Home /> : <Redirect to="/login" /> }
       </Route>
+
+      <Route path="/progress">
+        { loggedIn ? <Progress /> : <Redirect to="/login" /> }
+      </Route>
+
       <Route path="/login">
         { loggedIn ? <Redirect to="/" /> : <Login /> }
       </Route>
