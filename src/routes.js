@@ -13,12 +13,15 @@ const Routes = () => {
       <Route path="/" exact>
         { loggedIn ? <Home /> : <Redirect to="/login" /> }
       </Route>
-      <Route path="/login" exact>
+      <Route path="/login">
         { loggedIn ? <Redirect to="/" /> : <Login /> }
       </Route>
-      <Route path="/signup" exact>
+
+      <Route path="/signup">
         { loggedIn ? <Redirect to="/" /> : <SignUp /> }
       </Route>
+
+      <Redirect to="/" />
     </Switch>
   </BrowserRouter>)
 };

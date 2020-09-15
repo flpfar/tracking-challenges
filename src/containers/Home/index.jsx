@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import api from '../../api';
 import MetricsForm from '../../components/MetricsForm';
+import Navbar from '../../components/Navbar';
 
 const Home = () => {
   const user = useSelector(state => state.userData.user);
@@ -60,6 +61,7 @@ const Home = () => {
 
         </div>
       }
+      <Navbar />
     </div>
   );
 };
