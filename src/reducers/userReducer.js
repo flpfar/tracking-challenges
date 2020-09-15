@@ -11,7 +11,7 @@ const userReducer = (state = initialState, action) => {
     case 'ACTION_FAILED':
       return { errors: payload.errors, loggedIn: false, loading: false };
     case 'NO_TOKEN':
-      return { loggedIn: false };
+      return { loading: false, loggedIn: false };
     default:
       return state;
   }
