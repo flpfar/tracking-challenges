@@ -91,4 +91,21 @@ const logout = () => dispatch => {
   })
 }
 
-export { login, autoLogin, signUp, logout };
+const updateGoal = (newGoal) => async dispatch => {
+  try{
+    dispatch({
+      type: 'LOADING_USER',
+    });
+
+    const response = await api.patch('/daily_goal', { daily_goal: newGoal });
+
+    dispatch({
+      type: 'USER_GOAL_UPDATED',
+      payload: response.data,
+    });
+  } catch(error) {
+    dispatchActionFailed(dispatch, error);
+  }
+}
+
+export { login, autoLogin, signUp, logout, updateGoal };

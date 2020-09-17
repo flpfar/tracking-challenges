@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import api from '../../api';
-import { logout } from '../../actions/user';
+import { logout, updateGoal } from '../../actions/user';
 import Navbar from '../../components/Navbar';
 
 
@@ -10,14 +9,9 @@ const Profile = () => {
   const user = useSelector(state => state.userData.user )
   const [inputGoal, setInputGoal] = useState(user.daily_goal);
 
-  function handleGoalSubmit(){
-    api.patch('/daily_goal', { daily_goal: inputGoal })
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      })
+  function handleGoalSubmit(e){
+    e.preventDefault();
+    dispatch(updateGoal(inputGoal));
   }
 
   function handleAddOrSubtractButtonClick(e){
