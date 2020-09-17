@@ -1,0 +1,22 @@
+:root {
+  --color-primary: #41b5e8;
+  --color-primary-darker: #68c3ec;
+
+  --color-secondary: #323944;
+  --color-secondary-lighter: #f3f3f5;
+
+  --color-terciary: #addc91;
+
+  --color-bg: #f3f3f5;
+  --color-bg-lighter: #fff;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  src: url("../fonts/HelveticaNeue-Light.otf");
+}
+
+body {
+  font-family: "Helvetica Neue Light", sans-serif;
+  background-color: var(--color-bg);
+}
