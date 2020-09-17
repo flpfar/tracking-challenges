@@ -6,6 +6,7 @@ import Progress from './containers/Progress';
 import Login from './containers/Login';
 import SignUp from './containers/SignUp';
 import Profile from './containers/Profile';
+import About from './containers/About';
 
 const Routes = () => {
   const loggedIn = useSelector(state => state.userData.loggedIn);
@@ -22,6 +23,10 @@ const Routes = () => {
 
       <Route path="/profile">
         { loggedIn ? <Profile /> : <Redirect to="/login" /> }
+      </Route>
+
+      <Route path="/about">
+        { loggedIn ? <About /> : <Redirect to="/login" /> }
       </Route>
 
       <Route path="/login">
