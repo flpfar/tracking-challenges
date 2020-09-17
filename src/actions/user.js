@@ -20,7 +20,6 @@ const login = (user) => async dispatch => {
 
     const response = await api.post(`/login`, user);
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
     dispatch({
       type: 'USER_LOGGED_IN',
       payload: response.data,
@@ -50,7 +49,6 @@ const autoLogin = () => async dispatch => {
 
         const response = await api.get(`/auto_login`);
 
-        await new Promise(resolve => setTimeout(resolve, 3000));
         dispatch({
           type: 'USER_LOGGED_IN',
           payload: response.data,
@@ -113,7 +111,6 @@ const updateGoal = (newGoal) => async dispatch => {
 
     const response = await api.patch('/daily_goal', { daily_goal: newGoal });
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
     dispatch({
       type: 'USER_GOAL_UPDATED',
       payload: response.data,
