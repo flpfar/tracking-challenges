@@ -20,3 +20,10 @@ body {
   font-family: "Helvetica Neue Light", sans-serif;
   background-color: var(--color-bg);
 }
+
+.container {
+  margin-top: 8vh;
+  height: 82vh; /* 100vh - 8vh header - 10vh navbar/footer */
+  padding: 0.8rem;
+  overflow: scroll;
+}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, updateGoal } from '../../actions/user';
-import Navbar from '../../components/Navbar';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 
 
 const Profile = () => {
@@ -29,24 +28,19 @@ const Profile = () => {
   }
 
   return (
-    <> 
-      <section>
-        <Header title="Profile" />
+    <Layout current="Profile">
+      <p>{user.name}</p>
+      <p>{user.email}</p>
 
-        <p>{user.name}</p>
-        <p>{user.email}</p>
+      <form onSubmit={handleGoalSubmit}>
+        <button type="button" value="-" onClick={handleAddOrSubtractButtonClick} disabled={ inputGoal <= 1 ? true : false }>-</button>
+        <input type="number" value={inputGoal} min="1" onChange={(e) => setInputGoal(parseInt(e.target.value))} />
+        <button type="button" value="+" onClick={handleAddOrSubtractButtonClick} >+</button>
+        { user.daily_goal !== inputGoal ? <button type="submit">Set goal</button> : null }
+      </form>
 
-        <form onSubmit={handleGoalSubmit}>
-          <button type="button" value="-" onClick={handleAddOrSubtractButtonClick} disabled={ inputGoal <= 1 ? true : false }>-</button>
-          <input type="number" value={inputGoal} min="1" onChange={(e) => setInputGoal(parseInt(e.target.value))} />
-          <button type="button" value="+" onClick={handleAddOrSubtractButtonClick} >+</button>
-          { user.daily_goal !== inputGoal ? <button type="submit">Set goal</button> : null }
-        </form>
-
-        <button type="button" onClick={handleLogout}>Logout</button>
-      </section>
-      <Navbar />
-    </>
+      <button type="button" onClick={handleLogout}>Logout</button>
+    </Layout>
   );
 };
 

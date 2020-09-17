@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../api';
-import Navbar from '../../components/Navbar';
 import Loading from '../../components/Loading';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 
 const Progress = () => {
   const [days, setDays] = useState([]);
@@ -27,19 +26,15 @@ const Progress = () => {
   }
 
   return (
-    <>
-      <section>
-        <Header title="Progress" />
-        <ul>
-          {
-            days.map(day => (
-              <li key={day.date}>{day.date}</li>
-            ))
-          }
-        </ul>
-      </section>
-      <Navbar />
-    </>
+    <Layout current="Progress">
+      <ul>
+        {
+          days.map(day => (
+            <li key={day.date}>{day.date}</li>
+          ))
+        }
+      </ul>
+    </Layout>
   );
 }
 

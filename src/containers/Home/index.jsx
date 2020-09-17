@@ -2,10 +2,9 @@ import React, { useLayoutEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import api from '../../api';
 import MetricsForm from '../../components/MetricsForm';
-import Navbar from '../../components/Navbar';
 import Loading from '../../components/Loading';
+import Layout from '../../components/Layout';
 import { updateTotals } from '../../actions/user';
-import Header from '../../components/Header';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -57,30 +56,26 @@ const Home = () => {
   }
 
   return (
-    <>
-      <section>
-        <Header title="Track it" />
-        { loading ? <Loading /> : null }
-        { visibleMetrics ? (
-          <div>
-            <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} />
-  
-            <button onClick={() => setVisibleMetrics(false)}>Voltar</button>
-          </div> 
-        ) : (
-          <div>
-            <p>Hello, {user.name}!</p>
-            <p>Challenges: {user.total_challenges}</p>
-            <p>Daily Goal: {user.daily_goal}</p>
-            <p>Today is: {today.date}</p>
-            <button onClick={() => handleVisibleMetrics('learned')}>Learned: {today.learned}</button>
-            <button onClick={() => handleVisibleMetrics('reviewed')}>Reviewed: {today.reviewed}</button>
-  
-          </div>
-        )}
-      </section>
-      <Navbar />
-    </>
+    <Layout current="Track it">
+      { loading ? <Loading /> : null }
+      { visibleMetrics ? (
+        <div>
+          <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} />
+
+          <button onClick={() => setVisibleMetrics(false)}>Voltar</button>
+        </div> 
+      ) : (
+        <div>
+          <p>Hello, {user.name}!</p>
+          <p>Challenges: {user.total_challenges}</p>
+          <p>Daily Goal: {user.daily_goal}</p>
+          <p>Today is: {today.date}</p>
+          <button onClick={() => handleVisibleMetrics('learned')}>Learned: {today.learned}</button>
+          <button onClick={() => handleVisibleMetrics('reviewed')}>Reviewed: {today.reviewed}</button>
+
+        </div>
+      )}
+    </Layout>
   );
 };
 
