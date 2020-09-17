@@ -15,11 +15,12 @@ function dispatchActionFailed(dispatch, error) {
 const login = (user) => async dispatch => {
   try {
     dispatch({
-      type: 'LOADING_USER',
+      type: 'LOADING',
     });
 
     const response = await api.post(`/login`, user);
 
+    await new Promise(resolve => setTimeout(resolve, 3000));
     dispatch({
       type: 'USER_LOGGED_IN',
       payload: response.data,
@@ -29,6 +30,10 @@ const login = (user) => async dispatch => {
 
   } catch (error) {
     dispatchActionFailed(dispatch, error);
+  } finally {
+    dispatch({
+      type: 'LOADED',
+    });
   }
 }
 
@@ -40,11 +45,12 @@ const autoLogin = () => async dispatch => {
       api.defaults.headers.Authorization = `Bearer ${token}`;
       try {
         dispatch({
-          type: 'LOADING_USER',
+          type: 'LOADING',
         });
 
         const response = await api.get(`/auto_login`);
 
+        await new Promise(resolve => setTimeout(resolve, 3000));
         dispatch({
           type: 'USER_LOGGED_IN',
           payload: response.data,
@@ -54,6 +60,10 @@ const autoLogin = () => async dispatch => {
         localStorage.removeItem('token');
 
         dispatchActionFailed(dispatch, error);
+      } finally {
+        dispatch({
+          type: 'LOADED',
+        });
       }
     })();
   } else {
@@ -66,7 +76,7 @@ const autoLogin = () => async dispatch => {
 const signUp = (user) => async dispatch => {
   try{
     dispatch({
-      type: 'LOADING_USER',
+      type: 'LOADING',
     });
 
     const response = await api.post(`/signup`, user);
@@ -79,6 +89,10 @@ const signUp = (user) => async dispatch => {
     saveToken(response.data.token);
   } catch(error) {
     dispatchActionFailed(dispatch, error);
+  } finally {
+    dispatch({
+      type: 'LOADED',
+    });
   }
 }
 
@@ -94,17 +108,22 @@ const logout = () => dispatch => {
 const updateGoal = (newGoal) => async dispatch => {
   try{
     dispatch({
-      type: 'LOADING_USER',
+      type: 'LOADING',
     });
 
     const response = await api.patch('/daily_goal', { daily_goal: newGoal });
 
+    await new Promise(resolve => setTimeout(resolve, 3000));
     dispatch({
       type: 'USER_GOAL_UPDATED',
       payload: response.data,
     });
   } catch(error) {
     dispatchActionFailed(dispatch, error);
+  } finally {
+    dispatch({
+      type: 'LOADED',
+    });
   }
 }
 

@@ -1,23 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import api from '../../api';
 import MetricsForm from '../../components/MetricsForm';
 import Navbar from '../../components/Navbar';
+import Loading from '../../components/Loading';
 
 const Home = () => {
   const user = useSelector(state => state.userData.user);
   const [today, setToday] = useState({});
   const [visibleMetrics, setVisibleMetrics] = useState(false);
   const [currentMetric, setCurrentMetric] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setLoading(true);
     api.get('/today')
-      .then(response => {
+      .then(async response => {
         const { day } = response.data
+        await new Promise(resolve => setTimeout(resolve, 4000));
         setToday(day);
       })
       .catch(error => {
         console.dir(error);
+      })
+      .then(async() => {
+        setLoading(false);
       });
   }, [])
 
@@ -43,6 +50,10 @@ const Home = () => {
     const metric = event.target[0].name;
     setVisibleMetrics(false);
     submitMetrics(metric, value);
+  }
+
+  if(loading) {
+    return <Loading />
   }
 
   return (
