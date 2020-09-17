@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import api from '../../api';
 import Navbar from '../../components/Navbar';
+import Loading from '../../components/Loading';
 
 const Progress = () => {
   const [days, setDays] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     api.get('/days')
       .then(response => {
         setDays(response.data.days);
       })
       .catch(error => {
         console.dir(error);
+      })
+      .then(() => {
+        setLoading(false);
       });
-  }, [])
+  }, []);
+
+  if(loading) {
+    return <Loading />
+  }
 
   return (
     <>
