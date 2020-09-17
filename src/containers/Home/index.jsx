@@ -5,6 +5,8 @@ import MetricsForm from '../../components/MetricsForm';
 import Loading from '../../components/Loading';
 import Layout from '../../components/Layout';
 import { updateTotals } from '../../actions/user';
+import MetricButton from '../../components/MetricButton';
+import styles from './styles.module.css';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -70,8 +72,10 @@ const Home = () => {
           <p>Challenges: {user.total_challenges}</p>
           <p>Daily Goal: {user.daily_goal}</p>
           <p>Today is: {today.date}</p>
-          <button onClick={() => handleVisibleMetrics('learned')}>Learned: {today.learned}</button>
-          <button onClick={() => handleVisibleMetrics('reviewed')}>Reviewed: {today.reviewed}</button>
+          <div className={styles.metricsGrid}>
+            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
+            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
+          </div>
 
         </div>
       )}

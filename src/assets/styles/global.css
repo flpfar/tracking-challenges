@@ -7,6 +7,9 @@
 
   --color-terciary: #addc91;
 
+  --color-font: #5d6b81;
+  --color-font-light: #98a1af;
+
   --color-bg: #f3f3f5;
   --color-light: #fff;
 }
@@ -24,6 +27,5 @@ body {
 .container {
   margin-top: 8vh;
   height: 82vh; /* 100vh - 8vh header - 10vh navbar/footer */
-  padding: 0.8rem;
   overflow: scroll;
 }
