@@ -4,6 +4,7 @@
   width: 100vw;
   height: 10vh;
   background-color: var(--color-secondary);
+  z-index: 100;
 }
 
 .Navbar ul {
@@ -17,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--color-light);
   height: 100%;
   font-size: 0.8rem;
 }

@@ -1,12 +1,13 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
 
 const About = () => {
   return (
     <>
-      <div>
-        <h1>About</h1>
-      </div>
+      <section>
+        <Header title="About" />
+      </section>
       <Navbar />
     </>
   )

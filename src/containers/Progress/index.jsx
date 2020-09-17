@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from '../../api';
 import Navbar from '../../components/Navbar';
 import Loading from '../../components/Loading';
+import Header from '../../components/Header';
 
 const Progress = () => {
   const [days, setDays] = useState([]);
@@ -28,6 +29,7 @@ const Progress = () => {
   return (
     <>
       <section>
+        <Header title="Progress" />
         <ul>
           {
             days.map(day => (

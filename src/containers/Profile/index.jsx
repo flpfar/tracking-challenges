@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, updateGoal } from '../../actions/user';
 import Navbar from '../../components/Navbar';
+import Header from '../../components/Header';
 
 
 const Profile = () => {
@@ -30,7 +31,8 @@ const Profile = () => {
   return (
     <> 
       <section>
-        <h1>Profile</h1>
+        <Header title="Profile" />
+
         <p>{user.name}</p>
         <p>{user.email}</p>
 

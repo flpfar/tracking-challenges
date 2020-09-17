@@ -1,0 +1,8 @@
+.Header {
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
