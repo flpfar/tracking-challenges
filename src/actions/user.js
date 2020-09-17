@@ -124,4 +124,9 @@ const updateGoal = (newGoal) => async dispatch => {
   }
 }
 
-export { login, autoLogin, signUp, logout, updateGoal };
+const updateTotals = (user) => ({
+  type: 'USER_TOTALS_UPDATED',
+  payload: user
+});
+
+export { login, autoLogin, signUp, logout, updateGoal, updateTotals };

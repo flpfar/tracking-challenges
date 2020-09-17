@@ -10,6 +10,8 @@ const user = (state = initialState, action) => {
       return { loggedIn: false }
     case 'USER_GOAL_UPDATED':
       return { ...state, user: payload.user }
+    case 'USER_TOTALS_UPDATED':
+      return { ...state, user: { ...state.user, ...payload }}
     case 'ACTION_FAILED':
       return { errors: payload.errors, loggedIn: false };
     case 'NO_TOKEN':

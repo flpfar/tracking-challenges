@@ -1,11 +1,13 @@
 import React, { useLayoutEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import api from '../../api';
 import MetricsForm from '../../components/MetricsForm';
 import Navbar from '../../components/Navbar';
 import Loading from '../../components/Loading';
+import { updateTotals } from '../../actions/user';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.userData.user);
   const [today, setToday] = useState({});
   const [visibleMetrics, setVisibleMetrics] = useState(false);
@@ -36,7 +38,8 @@ const Home = () => {
   function submitMetrics(metric, value) {
     api.patch('/today', { [metric]: value } )
       .then(response => {
-        const { day } = response.data
+        const { day, user } = response.data;
+        dispatch(updateTotals(user));
         setToday(day);
       })
       .catch(error => {
@@ -52,26 +55,26 @@ const Home = () => {
     submitMetrics(metric, value);
   }
 
-  if(loading) {
-    return <Loading />
-  }
-
   return (
     <div>
-      { visibleMetrics ? 
+      { loading ? <Loading /> : null }
+      { visibleMetrics ? (
         <div>
           <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} />
 
           <button onClick={() => setVisibleMetrics(false)}>Voltar</button>
-        </div> :
+        </div> 
+      ) : (
         <div>
           <h1>Hello, {user.name}!</h1>
+          <p>Challenges: {user.total_challenges}</p>
+          <p>Daily Goal: {user.daily_goal}</p>
           <p>Today is: {today.date}</p>
           <button onClick={() => handleVisibleMetrics('learned')}>Learned: {today.learned}</button>
           <button onClick={() => handleVisibleMetrics('reviewed')}>Reviewed: {today.reviewed}</button>
 
         </div>
-      }
+      )}
       <Navbar />
     </div>
   );
