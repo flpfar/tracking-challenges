@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import api from '../../api';
+import { logout } from '../../actions/user';
 import Navbar from '../../components/Navbar';
 
 
 const Profile = () => {
+  const dispatch = useDispatch();
   const user = useSelector(state => state.userData.user )
   const [inputGoal, setInputGoal] = useState(user.daily_goal);
 
@@ -27,6 +29,10 @@ const Profile = () => {
     }
   }
 
+  function handleLogout(){
+    dispatch(logout());
+  }
+
   return (
     <> 
       <section>
@@ -40,6 +46,8 @@ const Profile = () => {
           <button type="button" value="+" onClick={handleAddOrSubtractButtonClick} >+</button>
           { user.daily_goal !== inputGoal ? <button type="submit">Set goal</button> : null }
         </form>
+
+        <button type="button" onClick={handleLogout}>Logout</button>
       </section>
       <Navbar />
     </>

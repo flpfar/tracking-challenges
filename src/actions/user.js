@@ -82,4 +82,13 @@ const signUp = (user) => async dispatch => {
   }
 }
 
-export { login, autoLogin, signUp };
+const logout = () => dispatch => {
+  localStorage.removeItem('token');
+  api.defaults.headers.Authorization = null;
+
+  dispatch({
+    type: 'USER_LOGGED_OUT'
+  })
+}
+
+export { login, autoLogin, signUp, logout };
