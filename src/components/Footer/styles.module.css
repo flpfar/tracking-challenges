@@ -2,7 +2,7 @@
   position: absolute;
   bottom: 0;
   width: 100vw;
-  height: 10vh;
+  height: 8vh;
   background-color: var(--color-secondary);
   z-index: 100;
   display: grid;
