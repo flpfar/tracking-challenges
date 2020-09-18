@@ -22,7 +22,7 @@ const Home = () => {
     api.get('/today')
       .then(async response => {
         const { day } = response.data
-        // await new Promise(resolve => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         setToday(day);
       })
       .catch(error => {
