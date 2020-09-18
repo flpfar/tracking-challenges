@@ -24,6 +24,10 @@ body {
   background-color: var(--color-bg);
 }
 
+button {
+  cursor: pointer;
+}
+
 .container {
   margin-top: 8vh;
   height: 82vh; /* 100vh - 8vh header - 10vh navbar/footer */

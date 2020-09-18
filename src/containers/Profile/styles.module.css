@@ -1,0 +1,135 @@
+.ProfileContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--color-font);
+}
+
+.userInfo {
+  background: var(--color-light);
+  padding: 0.8rem;
+  margin: 0.8rem 0.8rem 0;
+}
+
+.userInfo > p {
+  margin: 0.4rem 0;
+  font-size: 0.8rem;
+  color: var(--color-font-light);
+}
+
+.userInfo > p > span {
+  font-size: 1rem;
+  color: var(--color-font);
+}
+
+.userInfo .userName {
+  color: var(--color-font);
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.goalFormContainer {
+  text-align: center;
+  padding: 1rem 0;
+  background: var(--color-light);
+  margin: 0.8rem;
+  height: 13rem;
+}
+
+.goalFormContainer h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.goalFormContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goalFormContainer form button[type="submit"]{
+  margin-top: 1rem;
+  border: none;
+  background-color: var(--color-terciary);
+  color: var(--color-light);
+  border-radius: 0.2rem;
+  padding: 0.4rem 2rem;
+}
+
+.goalFormContainer form button[type="submit"]:disabled{
+  background-color: var(--color-bg);
+  color: var(--color-light);
+  cursor: initial;
+}
+
+.goalController {
+  background: var(--color-white);
+  border: 3px solid var(--color-bg);
+  display: flex;
+  width: 100px;
+  height: 100px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50%;
+}
+
+.goalController input {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 2rem;
+  border: none;
+  background: none;
+  text-align: center;
+  color: var(--color-font);
+}
+
+.goalFormContainer .addSubBtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: var(--color-light);
+  background-color: var(--color-primary);
+}
+
+.addBtn {
+  margin-right: -0.8rem;
+}
+
+.subBtn {
+  margin-left: -0.8rem;
+}
+
+.logoutContainer {
+  margin-top: auto;
+  height: 8vh;
+  text-align: center;
+}
+
+.logoutContainer button {
+  text-decoration: underline;
+  color: var(--color-font-light);
+  background: none;
+  border: none;
+}
+
+/* Remove arrows from input number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

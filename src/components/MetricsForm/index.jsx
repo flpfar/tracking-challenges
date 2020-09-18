@@ -14,7 +14,7 @@ const MetricsForm = ({ handleMetricsSubmit, metric, metricValue, setVisibleMetri
         </div>
         <div className={styles.buttonsContainer}>
           <div>
-            <button type="button" className={styles.backBtn} onClick={() => setVisibleMetrics(false)}>Voltar</button>
+            <button type="button" className={styles.backBtn} onClick={() => setVisibleMetrics(false)}>Back</button>
           </div>
           <button type="submit" className={styles.submitBtn}>Submit</button>
         </div>
