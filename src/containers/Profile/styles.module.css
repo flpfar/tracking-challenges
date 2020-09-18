@@ -32,6 +32,7 @@ input[type=number] {
 .userInfo > p > span {
   font-size: 1rem;
   color: var(--color-font);
+  margin-left: 0.4rem;
 }
 
 .userInfo .userName {
@@ -61,6 +62,14 @@ input[type=number] {
   align-items: center;
 }
 
+.goalFormContainer .addBtn {
+  margin-right: -0.8rem;
+}
+
+.goalFormContainer .subBtn {
+  margin-left: -0.8rem;
+}
+
 .goalFormContainer form button[type="submit"] {
   margin-top: 1rem;
   border: none;
@@ -70,7 +79,8 @@ input[type=number] {
   padding: 0.4rem 2rem;
 }
 
-.goalFormContainer form button[type="submit"]:disabled {
+.goalFormContainer form button[type="submit"]:disabled,
+.goalFormContainer .subBtn:disabled {
   background-color: var(--color-bg);
   color: var(--color-light);
   cursor: initial;
@@ -97,7 +107,7 @@ input[type=number] {
   color: var(--color-font);
 }
 
-.goalFormContainer .addSubBtn {
+.goalController .addSubBtn {
   width: 1.5rem;
   height: 1.5rem;
   display: flex;
@@ -109,14 +119,6 @@ input[type=number] {
   border-radius: 50%;
   color: var(--color-light);
   background-color: var(--color-primary);
-}
-
-.addBtn {
-  margin-right: -0.8rem;
-}
-
-.subBtn {
-  margin-left: -0.8rem;
 }
 
 .logoutContainer {
