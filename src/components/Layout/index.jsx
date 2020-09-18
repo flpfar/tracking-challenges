@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import Header from '../Header';
+import Footer from '../Footer';
 
-const Layout = ({ current, children }) => {
+const Layout = ({ current, children, footer }) => {
   return (
     <>
       <section>
@@ -11,7 +12,7 @@ const Layout = ({ current, children }) => {
           { children }
         </div>
       </section>
-      <Navbar />
+      { footer ? <Footer /> : <Navbar />}
     </>
   );
 };

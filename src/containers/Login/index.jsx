@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import Layout from '../../components/Layout';
 import { login } from '../../actions/user';
+import styles from './styles.module.css';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const userData = useSelector(state => state.userData)
+  const userData = useSelector(state => state.userData);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,18 +18,23 @@ const Login = () => {
   }
 
   return (
-    <div className="">
-      <h1>Login</h1>
-      
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="email" onChange={(e) => setEmail(e.target.value)} value={email} />
-        <input type="password" name="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-        <button type="submit">Submit</button>
-      </form>
+    <Layout current="Tracking Challenges" footer>
+      <div className={styles.Login}>
+        <div className={styles.LoginContainer}>
+          <h2>Log In</h2>
 
-      <p>{ userData.errors }</p>
-    </div>
+          <form onSubmit={handleSubmit}>
+            <input type="email" name="email" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email} required />
+            <input type="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password} required />
+            <button type="submit">Log In</button>
+          </form>
+
+          <p className={styles.error}>{ userData.errors }</p>
+        </div>
+        <Link to="/signup" className={styles.signupLink}>Sign Up</Link>
+      </div>
+    </Layout>
   );
-}
+};
 
 export default Login;
