@@ -21,17 +21,17 @@ const Home = () => {
     setLoading(true);
     api.get('/today')
       .then(async response => {
-        const { day } = response.data
+        const { day } = response.data;
         await new Promise(resolve => setTimeout(resolve, 3000));
         setToday(day);
       })
       .catch(error => {
         console.dir(error);
       })
-      .then(async() => {
+      .then(() => {
         setLoading(false);
       });
-  }, [])
+  }, []);
 
   function handleVisibleMetrics(type) {
     setCurrentMetric(type);
@@ -39,7 +39,7 @@ const Home = () => {
   }
 
   function submitMetrics(metric, value) {
-    api.patch('/today', { [metric]: value } )
+    api.patch('/today', { [metric]: value })
       .then(response => {
         const { day, user } = response.data;
         dispatch(updateTotals(user));
@@ -52,7 +52,7 @@ const Home = () => {
 
   function handleMetricsSubmit(event) {
     event.preventDefault();
-    const value = event.target[0].value;
+    const { value } = event.target[0];
     const metric = event.target[0].name;
     setVisibleMetrics(false);
     submitMetrics(metric, value);
@@ -66,15 +66,21 @@ const Home = () => {
     <Layout current="Track it">
       { loading ? <Loading /> : null }
       { visibleMetrics ? (
-        <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} setVisibleMetrics={setVisibleMetrics} />
+        <MetricsForm
+          handleMetricsSubmit={handleMetricsSubmit}
+          metric={currentMetric}
+          metricValue={today[currentMetric]}
+          setVisibleMetrics={setVisibleMetrics}
+        />
       ) : (
         <div>
-          <Statistics 
+          <Statistics
             todayDate={today.date}
             totalChallenges={user.total_challenges}
             dailyGoal={user.daily_goal}
             totalToday={totalToday()}
-            dailyAverage={user.total_challenges / user.total_working_days} />
+            dailyAverage={user.total_challenges / user.total_working_days}
+          />
 
           <div className={styles.metricsGrid}>
             <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
