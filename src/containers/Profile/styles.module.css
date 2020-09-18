@@ -1,3 +1,15 @@
+/* Remove arrows from input number */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .ProfileContainer {
   display: flex;
   flex-direction: column;
@@ -49,7 +61,7 @@
   align-items: center;
 }
 
-.goalFormContainer form button[type="submit"]{
+.goalFormContainer form button[type="submit"] {
   margin-top: 1rem;
   border: none;
   background-color: var(--color-terciary);
@@ -58,7 +70,7 @@
   padding: 0.4rem 2rem;
 }
 
-.goalFormContainer form button[type="submit"]:disabled{
+.goalFormContainer form button[type="submit"]:disabled {
   background-color: var(--color-bg);
   color: var(--color-light);
   cursor: initial;
@@ -82,7 +94,6 @@
   font-size: 2rem;
   border: none;
   background: none;
-  text-align: center;
   color: var(--color-font);
 }
 
@@ -119,17 +130,4 @@
   color: var(--color-font-light);
   background: none;
   border: none;
-}
-
-/* Remove arrows from input number */
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
 }
