@@ -3,10 +3,15 @@ import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-pro
 import 'react-circular-progressbar/dist/styles.css';
 import styles from './styles.module.css';
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+
 const Statistics = ({ todayDate, totalChallenges, dailyGoal, totalToday, dailyAverage }) => {
+  const day = new Date(todayDate);
+
   return (
     <div className={styles.statisticsContainer}>
-      <p>{todayDate}</p>
+      <p>{`${day.getDay()} ${monthNames[day.getMonth()]} ${day.getFullYear()}`} </p>
       <div className={styles.statisticsGrid}>
         <div className={styles.statisticsItem}>
           <CircularProgressbarWithChildren

@@ -6,7 +6,7 @@
 
 .statisticsContainer > p {
   text-align: center;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0 1.5rem;
 }
 
 .statisticsGrid {
@@ -14,6 +14,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.8rem;
   justify-items: center;
+  color: var(--color-font-light);
 }
 
 .statisticsItem {
@@ -21,7 +22,7 @@
 }
 
 .statisticsGrid > div > p {
-  margin: 0.4rem 0;
+  margin: 0.8rem 0 0.5rem;
   font-size: 0.8rem;
   text-align: center;
 }
