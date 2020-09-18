@@ -7,6 +7,7 @@ import Layout from '../../components/Layout';
 import { updateTotals } from '../../actions/user';
 import MetricButton from '../../components/MetricButton';
 import styles from './styles.module.css';
+import Statistics from '../../components/Statistics';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -57,6 +58,10 @@ const Home = () => {
     submitMetrics(metric, value);
   }
 
+  function totalToday() {
+    return today.reviewed + today.learned;
+  }
+
   return (
     <Layout current="Track it">
       { loading ? <Loading /> : null }
@@ -68,10 +73,13 @@ const Home = () => {
         </div> 
       ) : (
         <div>
-          <p>Hello, {user.name}!</p>
-          <p>Challenges: {user.total_challenges}</p>
-          <p>Daily Goal: {user.daily_goal}</p>
-          <p>Today is: {today.date}</p>
+          <Statistics 
+            todayDate={today.date}
+            totalChallenges={user.total_challenges}
+            dailyGoal={user.daily_goal}
+            totalToday={totalToday()}
+            dailyAverage={user.total_challenges / user.total_working_days} />
+
           <div className={styles.metricsGrid}>
             <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
             <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
