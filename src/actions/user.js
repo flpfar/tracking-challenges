@@ -2,23 +2,23 @@ import api from '../api';
 
 function saveToken(token) {
   localStorage.setItem('token', token);
-  api.defaults.headers.Authorization = `Bearer ${token}`
+  api.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
 function dispatchActionFailed(dispatch, error) {
   dispatch({
     type: 'ACTION_FAILED',
     payload: (error.response && error.response.data) || { errors: error.message },
-  })
+  });
 }
 
-const login = (user) => async dispatch => {
+const login = user => async dispatch => {
   try {
     dispatch({
       type: 'LOADING',
     });
 
-    const response = await api.post(`/login`, user);
+    const response = await api.post('/login', user);
 
     dispatch({
       type: 'USER_LOGGED_IN',
@@ -26,7 +26,6 @@ const login = (user) => async dispatch => {
     });
 
     saveToken(response.data.token);
-
   } catch (error) {
     dispatchActionFailed(dispatch, error);
   } finally {
@@ -34,12 +33,12 @@ const login = (user) => async dispatch => {
       type: 'LOADED',
     });
   }
-}
+};
 
 const autoLogin = () => async dispatch => {
   const token = localStorage.getItem('token');
 
-  if(token) {
+  if (token) {
     (async () => {
       api.defaults.headers.Authorization = `Bearer ${token}`;
       try {
@@ -47,13 +46,13 @@ const autoLogin = () => async dispatch => {
           type: 'LOADING',
         });
 
-        const response = await api.get(`/auto_login`);
+        const response = await api.get('/auto_login');
 
         dispatch({
           type: 'USER_LOGGED_IN',
           payload: response.data,
         });
-      } catch(error) {
+      } catch (error) {
         api.defaults.headers.Authorization = null;
         localStorage.removeItem('token');
 
@@ -69,15 +68,15 @@ const autoLogin = () => async dispatch => {
       type: 'NO_TOKEN',
     });
   }
-}
+};
 
-const signUp = (user) => async dispatch => {
-  try{
+const signUp = user => async dispatch => {
+  try {
     dispatch({
       type: 'LOADING',
     });
 
-    const response = await api.post(`/signup`, user);
+    const response = await api.post('/signup', user);
 
     dispatch({
       type: 'USER_LOGGED_IN',
@@ -85,26 +84,26 @@ const signUp = (user) => async dispatch => {
     });
 
     saveToken(response.data.token);
-  } catch(error) {
+  } catch (error) {
     dispatchActionFailed(dispatch, error);
   } finally {
     dispatch({
       type: 'LOADED',
     });
   }
-}
+};
 
 const logout = () => dispatch => {
   localStorage.removeItem('token');
   api.defaults.headers.Authorization = null;
 
   dispatch({
-    type: 'USER_LOGGED_OUT'
-  })
-}
+    type: 'USER_LOGGED_OUT',
+  });
+};
 
-const updateGoal = (newGoal) => async dispatch => {
-  try{
+const updateGoal = newGoal => async dispatch => {
+  try {
     dispatch({
       type: 'LOADING',
     });
@@ -115,18 +114,20 @@ const updateGoal = (newGoal) => async dispatch => {
       type: 'USER_GOAL_UPDATED',
       payload: response.data,
     });
-  } catch(error) {
+  } catch (error) {
     dispatchActionFailed(dispatch, error);
   } finally {
     dispatch({
       type: 'LOADED',
     });
   }
-}
+};
 
-const updateTotals = (user) => ({
+const updateTotals = user => ({
   type: 'USER_TOTALS_UPDATED',
-  payload: user
+  payload: user,
 });
 
-export { login, autoLogin, signUp, logout, updateGoal, updateTotals };
+export {
+  login, autoLogin, signUp, logout, updateGoal, updateTotals,
+};

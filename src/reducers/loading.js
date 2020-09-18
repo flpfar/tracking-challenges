@@ -3,7 +3,7 @@ const initialState = false;
 const loading = (state = initialState, action) => {
   const { type } = action;
 
-  switch(type) {
+  switch (type) {
     case 'LOADING':
       return true;
     case 'LOADED':
@@ -11,6 +11,6 @@ const loading = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default loading;

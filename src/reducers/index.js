@@ -4,7 +4,7 @@ import loading from './loading';
 
 const rootReducer = combineReducers({
   userData: user,
-  loading: loading,
+  loading,
 });
 
 export default rootReducer;
