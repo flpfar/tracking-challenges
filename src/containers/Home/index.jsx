@@ -66,11 +66,7 @@ const Home = () => {
     <Layout current="Track it">
       { loading ? <Loading /> : null }
       { visibleMetrics ? (
-        <div>
-          <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} />
-
-          <button onClick={() => setVisibleMetrics(false)}>Voltar</button>
-        </div> 
+        <MetricsForm handleMetricsSubmit={handleMetricsSubmit} metric={currentMetric} metricValue={today[currentMetric]} setVisibleMetrics={setVisibleMetrics} />
       ) : (
         <div>
           <Statistics 
