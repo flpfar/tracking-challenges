@@ -9,13 +9,18 @@
   margin-bottom: 1rem;
 }
 
-.statisticsInfo {
+.statisticsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.8rem;
+  justify-items: center;
 }
 
-.statisticsInfo > div > p {
+.statisticsItem {
+  max-width: 100px;
+}
+
+.statisticsGrid > div > p {
   margin: 0.4rem 0;
   font-size: 0.8rem;
   text-align: center;

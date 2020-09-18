@@ -1,5 +1,5 @@
 import React from 'react';
-import { CircularProgressbar, buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
+import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styles from './styles.module.css';
 
@@ -7,8 +7,8 @@ const Statistics = ({ todayDate, totalChallenges, dailyGoal, totalToday, dailyAv
   return (
     <div className={styles.statisticsContainer}>
       <p>{todayDate}</p>
-      <div className={styles.statisticsInfo}>
-        <div>
+      <div className={styles.statisticsGrid}>
+        <div className={styles.statisticsItem}>
           <CircularProgressbarWithChildren
             minValue="0"
             maxValue={totalChallenges}
@@ -22,14 +22,29 @@ const Statistics = ({ todayDate, totalChallenges, dailyGoal, totalToday, dailyAv
             </CircularProgressbarWithChildren>
           <p>Total Challenges</p>
         </div>
-        <div>
-          <CircularProgressbarWithChildren minValue={0} value={totalToday} maxValue={dailyGoal}  text={totalToday}>
+        <div className={styles.statisticsItem}>
+          <CircularProgressbarWithChildren
+            minValue={0}
+            value={totalToday}
+            maxValue={dailyGoal}
+            text={totalToday}
+            styles={buildStyles({
+              pathColor: `${totalToday >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+              textColor: `${totalToday >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+            })}>
             <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
           </CircularProgressbarWithChildren>
           <p>Total Today</p>
         </div>
-        <div>
-          <CircularProgressbarWithChildren maxValue={dailyGoal} value={dailyAverage} text={dailyAverage}>
+        <div className={styles.statisticsItem}>
+          <CircularProgressbarWithChildren
+            maxValue={dailyGoal}
+            value={dailyAverage}
+            text={dailyAverage}
+            styles={buildStyles({
+              pathColor: `${dailyAverage >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+              textColor: `${dailyAverage >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+            })}>
             <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
           </CircularProgressbarWithChildren>
           <p>Averge / Day</p>
