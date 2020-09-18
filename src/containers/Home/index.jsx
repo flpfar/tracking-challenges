@@ -15,14 +15,14 @@ const Home = () => {
   const [today, setToday] = useState({});
   const [visibleMetrics, setVisibleMetrics] = useState(false);
   const [currentMetric, setCurrentMetric] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useLayoutEffect(() => {
     setLoading(true);
     api.get('/today')
       .then(async response => {
         const { day } = response.data;
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        // await new Promise(resolve => setTimeout(resolve, 3000));
         setToday(day);
       })
       .catch(error => {
@@ -63,33 +63,34 @@ const Home = () => {
   }
 
   return (
-    <Layout current="Track it">
-      { loading ? <Loading /> : null }
-      { visibleMetrics ? (
-        <MetricsForm
-          handleMetricsSubmit={handleMetricsSubmit}
-          metric={currentMetric}
-          metricValue={today[currentMetric]}
-          setVisibleMetrics={setVisibleMetrics}
-        />
-      ) : (
-        <div>
-          <Statistics
-            todayDate={today.date}
-            totalChallenges={user.total_challenges}
-            dailyGoal={user.daily_goal}
-            totalToday={totalToday()}
-            dailyAverage={user.total_challenges / user.total_working_days}
+    loading ? <Loading /> : (
+      <Layout current="Track it">
+        { visibleMetrics ? (
+          <MetricsForm
+            handleMetricsSubmit={handleMetricsSubmit}
+            metric={currentMetric}
+            metricValue={today[currentMetric]}
+            setVisibleMetrics={setVisibleMetrics}
           />
+        ) : (
+          <div>
+            <Statistics
+              todayDate={today.date}
+              totalChallenges={user.total_challenges}
+              dailyGoal={user.daily_goal}
+              totalToday={totalToday()}
+              dailyAverage={user.total_challenges / user.total_working_days}
+            />
 
-          <div className={styles.metricsGrid}>
-            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
-            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
+            <div className={styles.metricsGrid}>
+              <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
+              <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
+            </div>
+
           </div>
-
-        </div>
-      )}
-    </Layout>
+        )}
+      </Layout>
+    )
   );
 };
 
