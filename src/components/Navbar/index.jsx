@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  TrendingUp, PieChart, User, HelpCircle,
+  TrendingUp, PieChart, User,
 } from 'react-feather';
 import styles from './styles.module.css';
 
@@ -10,7 +10,6 @@ const Navbar = () => {
     { name: 'Track.it', path: '/', icon: <TrendingUp /> },
     { name: 'Progress', path: '/progress', icon: <PieChart /> },
     { name: 'Profile', path: '/profile', icon: <User /> },
-    { name: 'About', path: '/about', icon: <HelpCircle /> },
   ];
 
   return (
