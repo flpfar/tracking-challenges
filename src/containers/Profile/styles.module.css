@@ -38,9 +38,15 @@ input[type=number] {
 .userInfo .userName {
   color: var(--color-font);
   font-weight: bold;
-  text-align: center;
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
+  display: flex;
+}
+
+.userInfo .userName button {
+  color: var(--color-font-light);
+  background: none;
+  border: none;
 }
 
 .goalFormContainer {
@@ -70,6 +76,24 @@ input[type=number] {
   margin-left: -0.8rem;
 }
 
+.goalController .addSubBtn {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  font-size: 1rem;
+  border-radius: 50%;
+  color: var(--color-light);
+  background-color: var(--color-primary);
+}
+
+.goalFormContainer .addSubBtn:hover {
+  opacity: 0.8;
+}
+
 .goalFormContainer form button[type="submit"] {
   margin-top: 1rem;
   border: none;
@@ -82,8 +106,12 @@ input[type=number] {
 .goalFormContainer form button[type="submit"]:disabled,
 .goalFormContainer .subBtn:disabled {
   background-color: var(--color-bg);
-  color: var(--color-light);
+  color: var(--color-font-light);
   cursor: initial;
+}
+
+.goalFormContainer form button[type="submit"]:hover:enabled {
+  opacity: 0.8;
 }
 
 .goalController {
@@ -105,31 +133,4 @@ input[type=number] {
   border: none;
   background: none;
   color: var(--color-font);
-}
-
-.goalController .addSubBtn {
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 0;
-  font-size: 1rem;
-  border-radius: 50%;
-  color: var(--color-light);
-  background-color: var(--color-primary);
-}
-
-.logoutContainer {
-  margin-top: auto;
-  height: 8vh;
-  text-align: center;
-}
-
-.logoutContainer button {
-  text-decoration: underline;
-  color: var(--color-font-light);
-  background: none;
-  border: none;
 }

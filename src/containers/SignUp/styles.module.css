@@ -40,6 +40,10 @@
   color: var(--color-light);
 }
 
+.signupContainer form > button:hover {
+  opacity: 0.8;
+}
+
 .signupContainer .error {
   color: #e00;
   font-size: 0.9rem;

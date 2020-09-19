@@ -31,7 +31,14 @@ const Profile = () => {
     <Layout current="Profile">
       <div className={styles.ProfileContainer}>
         <div className={styles.userInfo}>
-          <p className={styles.userName}>{user.name}</p>
+          <p className={styles.userName}>
+            {user.name}
+            <button type="button" onClick={handleLogout}>
+              (
+              <u>log out</u>
+              )
+            </button>
+          </p>
           <p>
             Email:
             <span>{user.email}</span>
@@ -59,9 +66,6 @@ const Profile = () => {
             </div>
             <button type="submit" disabled={user.daily_goal === inputGoal}>Set goal</button>
           </form>
-        </div>
-        <div className={styles.logoutContainer}>
-          <button type="button" onClick={handleLogout}>Log out</button>
         </div>
       </div>
     </Layout>

@@ -79,7 +79,7 @@ const Home = () => {
               totalChallenges={user.total_challenges}
               dailyGoal={user.daily_goal}
               totalToday={totalToday()}
-              dailyAverage={user.total_challenges / user.total_working_days}
+              dailyAverage={Math.round((user.total_challenges / user.total_working_days) * 10) / 10}
             />
 
             <div className={styles.metricsGrid}>

@@ -60,7 +60,7 @@ const Statistics = ({
         >
           <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
         </CircularProgressbarWithChildren>
-        <p>Averge / Day</p>
+        <p>Average / Day</p>
       </div>
     </div>
   </div>
