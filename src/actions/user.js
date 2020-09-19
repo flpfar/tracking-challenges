@@ -128,6 +128,10 @@ const updateTotals = user => ({
   payload: user,
 });
 
+const clearErrors = () => ({
+  type: 'CLEAR_ERRORS',
+});
+
 export {
-  login, autoLogin, signUp, logout, updateGoal, updateTotals,
+  login, autoLogin, signUp, logout, updateGoal, updateTotals, clearErrors,
 };

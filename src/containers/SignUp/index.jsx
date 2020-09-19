@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { signUp } from '../../actions/user';
+import { signUp, clearErrors } from '../../actions/user';
 import Layout from '../../components/Layout';
 import styles from './styles.module.css';
 
@@ -36,7 +36,7 @@ const SignUp = () => {
           )) : null }
 
         </div>
-        <Link to="/login" className={styles.loginLink}>Login</Link>
+        <Link to="/login" className={styles.loginLink} onClick={() => dispatch(clearErrors())}>Login</Link>
       </div>
     </Layout>
   );

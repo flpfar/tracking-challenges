@@ -14,6 +14,8 @@ const user = (state = initialState, action) => {
       return { ...state, user: { ...state.user, ...payload } };
     case 'ACTION_FAILED':
       return { errors: payload.errors, loggedIn: false };
+    case 'CLEAR_ERRORS':
+      return { ...state, errors: [] };
     case 'NO_TOKEN':
       return { loggedIn: false };
     default:

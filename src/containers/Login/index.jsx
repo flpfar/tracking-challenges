@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Layout from '../../components/Layout';
-import { login } from '../../actions/user';
+import { login, clearErrors } from '../../actions/user';
 import styles from './styles.module.css';
 
 const Login = () => {
@@ -31,7 +31,7 @@ const Login = () => {
 
           <p className={styles.error}>{ userData.errors }</p>
         </div>
-        <Link to="/signup" className={styles.signupLink}>Sign Up</Link>
+        <Link to="/signup" className={styles.signupLink} onClick={() => dispatch(clearErrors())}>Sign Up</Link>
       </div>
     </Layout>
   );
