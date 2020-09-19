@@ -1,7 +1,11 @@
-.daysList {
+.daysList,
+.todayContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.daysList {
   margin-bottom: 0.8rem;
 }
 

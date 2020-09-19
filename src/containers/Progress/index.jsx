@@ -44,9 +44,11 @@ const Progress = () => {
     <Layout current="Progress">
       {today ? (
         <>
-          <p className={styles.separatorParagraph}>Last activity</p>
-          <ProgressDayItem day={today} user={user} />
-          <p className={styles.separatorParagraph}>Past days</p>
+          <div className={styles.todayContainer}>
+            <p className={styles.separatorParagraph}>Last activity</p>
+            <ProgressDayItem day={today} user={user} />
+            <p className={styles.separatorParagraph}>Past days</p>
+          </div>
           <ul className={styles.daysList}>
             { otherDays.map(day => (
               <li key={day.date}>
