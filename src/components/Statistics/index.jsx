@@ -23,6 +23,7 @@ const Statistics = ({
           styles={buildStyles({
             trailColor: '#f3f3f5',
             pathColor: colorPicker(totalChallenges, totalChallenges),
+            textColor: colorPicker(totalChallenges, totalChallenges),
           })}
         >
           <span className={styles.perMetric}>Solved</span>
@@ -32,12 +33,13 @@ const Statistics = ({
       <div className={styles.statisticsItem}>
         <CircularProgressbarWithChildren
           minValue={0}
-          value={totalToday}
+          value={totalToday || 0}
           maxValue={dailyGoal}
           text={totalToday || '0'}
           styles={buildStyles({
             trailColor: '#f3f3f5',
-            pathColor: colorPicker(dailyGoal, totalToday),
+            pathColor: colorPicker(dailyGoal, totalToday || 0),
+            textColor: colorPicker(dailyGoal, totalToday || 0),
           })}
         >
           <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
@@ -46,12 +48,14 @@ const Statistics = ({
       </div>
       <div className={styles.statisticsItem}>
         <CircularProgressbarWithChildren
+          minValue={0}
+          value={dailyAverage || 0}
           maxValue={dailyGoal}
-          value={dailyAverage}
           text={dailyAverage || '0'}
           styles={buildStyles({
             trailColor: '#f3f3f5',
-            pathColor: colorPicker(dailyGoal, dailyAverage),
+            pathColor: colorPicker(dailyGoal, dailyAverage || 0),
+            textColor: colorPicker(dailyGoal, dailyAverage || 0),
           })}
         >
           <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>

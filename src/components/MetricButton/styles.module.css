@@ -28,4 +28,5 @@
 
 .icon {
   color: var(--color-primary);
+  stroke-width: 1px;
 }
