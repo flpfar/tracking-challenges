@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import formatDate from '../../utils/dateUtils';
+import colorPicker from '../../utils/circularProgressUtils';
 import styles from './styles.module.css';
 
 const Statistics = ({
@@ -20,8 +21,8 @@ const Statistics = ({
           value={totalChallenges}
           text={totalChallenges || '0'}
           styles={buildStyles({
-            pathColor: '#00CC00',
-            textColor: '#00CC00',
+            trailColor: '#f3f3f5',
+            pathColor: colorPicker(totalChallenges, totalChallenges),
           })}
         >
           <span className={styles.perMetric}>Solved</span>
@@ -35,8 +36,8 @@ const Statistics = ({
           maxValue={dailyGoal}
           text={totalToday || '0'}
           styles={buildStyles({
-            pathColor: `${totalToday >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
-            textColor: `${totalToday >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+            trailColor: '#f3f3f5',
+            pathColor: colorPicker(dailyGoal, totalToday),
           })}
         >
           <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
@@ -49,8 +50,8 @@ const Statistics = ({
           value={dailyAverage}
           text={dailyAverage || '0'}
           styles={buildStyles({
-            pathColor: `${dailyAverage >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
-            textColor: `${dailyAverage >= dailyGoal ? '#00CC00' : '#3E99C7'}`,
+            trailColor: '#f3f3f5',
+            pathColor: colorPicker(dailyGoal, dailyAverage),
           })}
         >
           <span className={styles.perMetric}>{`Goal: ${dailyGoal}`}</span>
