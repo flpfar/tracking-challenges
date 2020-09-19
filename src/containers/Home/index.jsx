@@ -8,6 +8,7 @@ import { updateTotals } from '../../actions/user';
 import MetricButton from '../../components/MetricButton';
 import styles from './styles.module.css';
 import Statistics from '../../components/Statistics';
+import ErrorPage from '../../components/ErrorPage';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Home = () => {
   const [today, setToday] = useState({});
   const [visibleMetrics, setVisibleMetrics] = useState(false);
   const [currentMetric, setCurrentMetric] = useState('');
+  const [apiError, setApiError] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useLayoutEffect(() => {
@@ -22,11 +24,11 @@ const Home = () => {
     api.get('/today')
       .then(async response => {
         const { day } = response.data;
-        // await new Promise(resolve => setTimeout(resolve, 3000));
+        setApiError(false);
         setToday(day);
       })
-      .catch(error => {
-        console.dir(error);
+      .catch(() => {
+        setApiError(true);
       })
       .then(() => {
         setLoading(false);
@@ -44,9 +46,10 @@ const Home = () => {
         const { day, user } = response.data;
         dispatch(updateTotals(user));
         setToday(day);
+        setApiError(false);
       })
-      .catch(error => {
-        console.dir(error);
+      .catch(() => {
+        setApiError(true);
       });
   }
 
@@ -62,35 +65,41 @@ const Home = () => {
     return today.reviewed + today.learned;
   }
 
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (apiError) {
+    return <ErrorPage />;
+  }
+
   return (
-    loading ? <Loading /> : (
-      <Layout current="Track it">
-        { visibleMetrics ? (
-          <MetricsForm
-            handleMetricsSubmit={handleMetricsSubmit}
-            metric={currentMetric}
-            metricValue={today[currentMetric]}
-            setVisibleMetrics={setVisibleMetrics}
+    <Layout current="Track it">
+      { visibleMetrics ? (
+        <MetricsForm
+          handleMetricsSubmit={handleMetricsSubmit}
+          metric={currentMetric}
+          metricValue={today[currentMetric]}
+          setVisibleMetrics={setVisibleMetrics}
+        />
+      ) : (
+        <div>
+          <Statistics
+            todayDate={today.date}
+            totalChallenges={user.total_challenges}
+            dailyGoal={user.daily_goal}
+            totalToday={totalToday()}
+            dailyAverage={Math.round((user.total_challenges / user.total_working_days) * 10) / 10}
           />
-        ) : (
-          <div>
-            <Statistics
-              todayDate={today.date}
-              totalChallenges={user.total_challenges}
-              dailyGoal={user.daily_goal}
-              totalToday={totalToday()}
-              dailyAverage={Math.round((user.total_challenges / user.total_working_days) * 10) / 10}
-            />
 
-            <div className={styles.metricsGrid}>
-              <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
-              <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
-            </div>
-
+          <div className={styles.metricsGrid}>
+            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="reviewed" metrics={today.reviewed} />
+            <MetricButton handleVisibleMetrics={handleVisibleMetrics} label="learned" metrics={today.learned} />
           </div>
-        )}
-      </Layout>
-    )
+
+        </div>
+      )}
+    </Layout>
   );
 };
 

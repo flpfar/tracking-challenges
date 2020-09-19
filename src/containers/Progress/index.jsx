@@ -5,11 +5,13 @@ import Loading from '../../components/Loading';
 import Layout from '../../components/Layout';
 import styles from './styles.module.css';
 import ProgressDayItem from '../../components/ProgressDayItem';
+import ErrorPage from '../../components/ErrorPage';
 
 const Progress = () => {
   const user = useSelector(state => state.userData.user);
   const [otherDays, setOtherDays] = useState([]);
   const [today, setToday] = useState({});
+  const [apiError, setApiError] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,11 +20,12 @@ const Progress = () => {
       .then(response => {
         const { days } = response.data;
         const apiToday = days.shift();
+        setApiError(false);
         setToday(apiToday);
         setOtherDays(days);
       })
-      .catch(error => {
-        console.dir(error);
+      .catch(() => {
+        setApiError(true);
       })
       .then(() => {
         setLoading(false);
@@ -31,6 +34,10 @@ const Progress = () => {
 
   if (loading) {
     return <Loading />;
+  }
+
+  if (apiError) {
+    return <ErrorPage />;
   }
 
   return (
