@@ -1,0 +1,25 @@
+.daysList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.daysList li {
+  width: 100%;
+  min-width: 18rem;
+  max-width: 30rem;
+}
+
+.separatorParagraph {
+  margin: 0.8rem 1rem 0.6rem;
+  font-size: 0.9rem;
+  color: var(--color-font);
+}
+
+.noProgress {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--color-font-light);
+  font-style: italic;
+}
