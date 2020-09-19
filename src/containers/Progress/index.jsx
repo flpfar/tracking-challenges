@@ -37,7 +37,7 @@ const Progress = () => {
     <Layout current="Progress">
       {today ? (
         <>
-          <p className={styles.separatorParagraph}>Today</p>
+          <p className={styles.separatorParagraph}>Last activity</p>
           <ProgressDayItem day={today} user={user} />
           <p className={styles.separatorParagraph}>Past days</p>
           <ul className={styles.daysList}>
