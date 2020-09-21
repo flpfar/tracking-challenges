@@ -23,11 +23,14 @@ This webapp helps to keep track of the number of coding challenges learned and r
 - Redux
 - CSS Modules
 - JWT (authentication/authorization)
+- Jest
+- React Testing Library
 - Yarn
 
-## Live URL
+## Live Version
 
 - https://trackingchallenges.netlify.app/
+- To test with an existing user, login with email *user@user.<n/>com* and password *123123*
 
 ## Setup
 
@@ -39,11 +42,12 @@ This webapp helps to keep track of the number of coding challenges learned and r
 
 ### Run tests
 
-This project uses RSpec for testing. In order to run the tests, type `rspec` in the terminal, inside this project folder. For more information about the running tests, use `rspec -f d`
+- Run `yarn test`
+- (Optional) Run `yarn test -- --verbose` to check test details
 
 ## Development Notes
 
-- I've been using a trello board to manage some of the tasks for this project. This board is available [here](https://trello.com/b/RXSpBmA0/tracking-challenges).
+- I've used a trello board to manage some of the tasks for this project, available [here](https://trello.com/b/RXSpBmA0/tracking-challenges).
 
 ## 👤 Author
 
