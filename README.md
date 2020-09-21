@@ -1,68 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tracking Challenges
 
-## Available Scripts
+> A react app to keep track of the number of coding challenges solved daily.
 
-In the project directory, you can run:
+![tracking](https://user-images.githubusercontent.com/15898299/93793254-f6e17800-fc0c-11ea-9a40-d34f42e7bc7b.jpg)
 
-### `yarn start`
+This webapp helps to keep track of the number of coding challenges learned and reviewed daily, keeping all information for a user stored in a Rails API. All information is sent/retrieved from the API and can be accessed by the endpoints provided dependending on a JWT authentication/authorization.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Login to keep track of the number of challenges solved each day.
+- Add *Reviewed* or *Learned* amount of challenges for the current day.
+- Set a daily goal.
+- List all days with entries.
 
-### `yarn test`
+- Redux store to keep user data.
+- JWT authentication/authorization using redux thunk.
+- Circular progressbars to increment UI/UX.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Built With
 
-### `yarn build`
+- React
+- Redux
+- CSS Modules
+- JWT (authentication/authorization)
+- Yarn
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Live URL
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+- https://trackingchallenges.netlify.app/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Setup
 
-### `yarn eject`
+- Clone this repository with: `git clone https://github.com/flpfar/tracking-challenges.git`
+- Navigate to the project folder `cd tracking-challenges`
+- Run `yarn install`.
+- Run `yarn start`.
+- Navigate to `http://localhost:3000` in your browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Run tests
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+This project uses RSpec for testing. In order to run the tests, type `rspec` in the terminal, inside this project folder. For more information about the running tests, use `rspec -f d`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Development Notes
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- I've been using a trello board to manage some of the tasks for this project. This board is available [here](https://trello.com/b/RXSpBmA0/tracking-challenges).
 
-## Learn More
+## 👤 Author
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Felipe Rosa (@flpfar)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Github](https://github.com/flpfar) | [Twitter](https://twitter.com/flpfar) | [Linkedin](https://www.linkedin.com/in/felipe-augusto-rosa)
 
-### Code Splitting
+## Acknowledgements
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- The API used in this project can be found [here](https://github.com/flpfar/tracking-challenges-backend).
+- The requirements for this project were given by [Microverse](https://www.microverse.org/) as the final project of their Bootcamp program.
+- The specifications and requirements for this project are [here](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772).
+- This project design was based on [Body Trackit](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI) app concept by [Gregoire Vella](https://www.behance.net/gregoirevella).
 
-### Analyzing the Bundle Size
+## 🤝 Contributing
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+Contributions, issues and feature requests are welcome!
 
-### Making a Progressive Web App
+Feel free to check the [issues page](https://github.com/flpfar/tracking-challenges/issues).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Show your support
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Give a ⭐️ if you like this project!
