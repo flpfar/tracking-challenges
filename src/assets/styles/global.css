@@ -27,5 +27,5 @@ button {
 .container {
   margin-top: 8vh;
   height: 82vh; /* 100vh - 8vh header - 10vh navbar/footer */
-  overflow: scroll;
+  overflow: auto;
 }
