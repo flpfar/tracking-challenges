@@ -11,6 +11,7 @@ const MetricsForm = ({
     <div className={styles.MetricsFormContainer}>
       <h2>
         Challenges
+        {' '}
         <span>{metric}</span>
         {' '}
         today
