@@ -1,0 +1,59 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0.8rem;
+}
+
+.LoginContainer {
+  background-color: var(--color-light);
+  text-align: center;
+  color: var(--color-font);
+  padding: 0.8rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  max-width: 24rem;
+}
+
+.LoginContainer form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+}
+
+.LoginContainer form > input {
+  margin-bottom: 0.8rem;
+  border: 2px solid var(--color-bg);
+  padding: 0.6rem;
+  border-radius: 0.2rem;
+}
+
+.LoginContainer form > button {
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 0.2rem;
+  color: var(--color-light);
+}
+
+.LoginContainer form > button:hover {
+  opacity: 0.8;
+}
+
+.LoginContainer .error {
+  color: #e00;
+  font-size: 0.9rem;
+}
+
+.signupLink {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
+
+.signupLink:hover {
+  color: var(--color-primary-darker);
+}

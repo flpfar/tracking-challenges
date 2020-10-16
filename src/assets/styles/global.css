@@ -1,0 +1,31 @@
+:root {
+  --color-primary: #41b5e8;
+  --color-primary-darker: #68c3ec;
+  --color-secondary: #323944;
+  --color-secondary-lighter: #f3f3f5;
+  --color-terciary: #97e393;
+  --color-font: #5d6b81;
+  --color-font-light: #98a1af;
+  --color-bg: #f3f3f5;
+  --color-light: #fff;
+}
+
+@font-face {
+  font-family: "Helvetica Neue Light";
+  src: url("../fonts/HelveticaNeue-Light.otf");
+}
+
+body {
+  font-family: "Helvetica Neue Light", sans-serif;
+  background-color: var(--color-bg);
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 8vh;
+  height: 82vh; /* 100vh - 8vh header - 10vh navbar/footer */
+  overflow: auto;
+}

@@ -1,0 +1,12 @@
+.ErrorPage {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--color-font);
+}
+
+.ErrorPage p + p {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+}

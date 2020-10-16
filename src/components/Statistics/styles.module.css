@@ -1,0 +1,33 @@
+.statisticsContainer {
+  background-color: var(--color-light);
+  color: var(--color-font);
+  padding: 0.8rem;
+}
+
+.statisticsContainer > p {
+  text-align: center;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.statisticsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.8rem;
+  justify-items: center;
+  color: var(--color-font-light);
+}
+
+.statisticsItem {
+  max-width: 100px;
+}
+
+.statisticsGrid > div > p {
+  margin: 0.8rem 0 0.5rem;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.perMetric {
+  margin-top: 2rem;
+  font-size: 0.7rem;
+}

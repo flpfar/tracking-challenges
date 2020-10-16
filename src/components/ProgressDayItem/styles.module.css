@@ -1,0 +1,45 @@
+.dayItem {
+  background-color: var(--color-light);
+  color: var(--color-font);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.8rem;
+  height: 4rem;
+  width: 100%;
+  min-width: 18rem;
+  max-width: 30rem;
+  border-bottom: 2px solid var(--color-bg);
+}
+
+.progressCircle {
+  width: 2rem;
+}
+
+.dayTextInfo {
+  flex: 1;
+  padding: 0 0.8rem;
+  font-weight: 700;
+}
+
+.dayNumbers {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--color-font-light);
+}
+
+.dayNumbers span:first-child {
+  margin-right: 0.6rem;
+}
+
+.totalSolved {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-font-light);
+}
+
+.totalSolved p:first-child {
+  font-size: 1.3rem;
+  color: var(--color-font);
+}
